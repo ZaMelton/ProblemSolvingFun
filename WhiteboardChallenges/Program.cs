@@ -49,7 +49,16 @@ namespace WhiteboardChallenges
 
             Console.WriteLine(PrintDuplicateStringCharacters("aabbcdddeeeeffghijkl"));
 
-            string x = ReverseWithRecursion("food", "");
+            Console.WriteLine(ReverseWithRecursion("food", ""));
+
+            Grid grid = new Grid(20, 20);
+            Rectangle rectangle = new Rectangle(15, 2);
+            Rectangle rectangle2 = new Rectangle(5, 18);
+
+            grid.PlaceRectanglesOnBoard(rectangle, rectangle2);
+
+            int[] count = VowelCount("this is a sentence");
+            Console.WriteLine(PrintArray(count));
 
             Console.ReadLine();
 
@@ -184,8 +193,6 @@ namespace WhiteboardChallenges
             int positiveCount = 0;
             int negativeCount = 0;
 
-            int[] countOfNums = new int[2];
-
             foreach (int num in numbers)
             {
                 if (num == 0)
@@ -202,10 +209,7 @@ namespace WhiteboardChallenges
                 }
             }
 
-            countOfNums[0] = positiveCount;
-            countOfNums[1] = negativeCount;
-
-            return countOfNums;
+            return new int[] { positiveCount, negativeCount };
         }
 
         public static int[] TurnStringOfNumsToArray(string toChange)
@@ -345,6 +349,29 @@ namespace WhiteboardChallenges
                 return ReverseWithRecursion(input, reversed);
             }
             return reversed;
+        }
+
+        public static int[] VowelCount(string input)
+        {
+            int vowelCount = 0;
+            int consonantsCount = 0;
+
+            char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
+            input = input.Replace(" ", String.Empty).ToLower();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (vowels.Contains(input[i]))
+                {
+                    vowelCount++;
+                }
+                else
+                {
+                    consonantsCount++;
+                }
+            }
+
+            return new int[] { vowelCount, consonantsCount };
         }
     }
 
