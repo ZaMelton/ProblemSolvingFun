@@ -17,11 +17,11 @@ namespace WhiteboardChallenges
 
             Console.WriteLine($"Reversed reciprocal: {ReverseReciprocal(17)}");
 
-            Console.WriteLine($"Total turn to target: {TurnsToTargetCombo(new int[] { 3, 8, 9, 3 }, new int[] { 5, 2, 9, 6})}");
+            Console.WriteLine($"Total turn to target: {TurnsToTargetCombo(new int[] { 3, 8, 9, 3 }, new int[] { 5, 2, 9, 6 })}");
 
-            Console.WriteLine(SequenceOfIncrementing( new List<int> {5,7,3,8,6}));
-            Console.WriteLine(SequenceOfIncrementing( new List<int> {17,15,20,19,21,16,18}));
-            Console.WriteLine(SequenceOfIncrementing( new List<int> {6, 2, 8, 4}));
+            Console.WriteLine(SequenceOfIncrementing(new List<int> { 5, 7, 3, 8, 6 }));
+            Console.WriteLine(SequenceOfIncrementing(new List<int> { 17, 15, 20, 19, 21, 16, 18 }));
+            Console.WriteLine(SequenceOfIncrementing(new List<int> { 6, 2, 8, 4 }));
 
             int[] countOfNums = CountOfPositiveAndNegative(new int[] { 7, 9, -3, -32, 0, -1, 36, 95, -14, -99, 21 });
             Console.WriteLine(PrintArray(countOfNums));
@@ -46,6 +46,11 @@ namespace WhiteboardChallenges
             Console.WriteLine(AlphabetPosition("abc!"));
             Console.WriteLine(AlphabetPosition("coding is fun"));
             Console.WriteLine(AlphabetPosition("I LIKE POTATOES"));
+
+            Console.WriteLine(PrintDuplicateStringCharacters("aabbcdddeeeeffghijkl"));
+
+            string x = ReverseWithRecursion("food", "");
+
             Console.ReadLine();
 
         }
@@ -56,10 +61,10 @@ namespace WhiteboardChallenges
             int[] indices = new int[2];
             int current;
 
-            for(int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 current = numbers[i];
-                for(int j = 0; j < numbers.Length; j++)
+                for (int j = 0; j < numbers.Length; j++)
                 {
                     if (current + numbers[j] == target)
                     {
@@ -77,7 +82,7 @@ namespace WhiteboardChallenges
         {
             string printedNums;
 
-            if(indices[0] == indices[1])
+            if (indices[0] == indices[1])
             {
                 printedNums = "None of the numbers added to the target..";
             }
@@ -93,7 +98,7 @@ namespace WhiteboardChallenges
         {
             string reversedWord = "";
 
-            for(int i = wordToReverse.Length - 1; i >= 0; i--)
+            for (int i = wordToReverse.Length - 1; i >= 0; i--)
             {
                 reversedWord += wordToReverse[i];
             }
@@ -103,7 +108,7 @@ namespace WhiteboardChallenges
 
         public static string CheckForPalindrome(string wordToCheck)
         {
-            if(ReverseString(wordToCheck).Replace(" ", String.Empty) == wordToCheck.Replace(" ", String.Empty))
+            if (ReverseString(wordToCheck).Replace(" ", String.Empty) == wordToCheck.Replace(" ", String.Empty))
             {
                 return $"{wordToCheck} is a palindrome!";
             }
@@ -130,10 +135,10 @@ namespace WhiteboardChallenges
             int turns;
             int totalTurns = 0;
 
-            for(int i = 0; i < current.Length; i++)
+            for (int i = 0; i < current.Length; i++)
             {
                 turns = Math.Abs(current[i] - target[i]);
-                if(turns > 5)
+                if (turns > 5)
                 {
                     turns = 10 - current[i] + target[i];
                 }
@@ -150,9 +155,9 @@ namespace WhiteboardChallenges
 
             int incrementValue = numbers[1] - numbers[0];
 
-            for(int i = 0; i < numbers.Count - 1; i++)
+            for (int i = 0; i < numbers.Count - 1; i++)
             {
-                if(!(numbers[i + 1] == numbers[i] + incrementValue))
+                if (!(numbers[i + 1] == numbers[i] + incrementValue))
                 {
                     increments = false;
                     break;
@@ -165,7 +170,7 @@ namespace WhiteboardChallenges
         {
             string arrayString = "";
 
-            foreach(int item in array)
+            foreach (int item in array)
             {
                 arrayString += item.ToString() + " ";
             }
@@ -181,13 +186,13 @@ namespace WhiteboardChallenges
 
             int[] countOfNums = new int[2];
 
-            foreach(int num in numbers)
+            foreach (int num in numbers)
             {
                 if (num == 0)
                 {
                     continue;
                 }
-                else if(num > 0)
+                else if (num > 0)
                 {
                     positiveCount++;
                 }
@@ -208,7 +213,7 @@ namespace WhiteboardChallenges
             string[] stringValues = toChange.Split(' ');
             int[] numArrayFromString = new int[stringValues.Length];
 
-            for(int i = 0; i < stringValues.Length; i++)
+            for (int i = 0; i < stringValues.Length; i++)
             {
                 numArrayFromString[i] = Int32.Parse(stringValues[i]);
             }
@@ -226,11 +231,11 @@ namespace WhiteboardChallenges
 
             for (int i = 0; i < nums.Length; i++)
             {
-                if(nums[i] > highest)
+                if (nums[i] > highest)
                 {
                     highest = nums[i];
                 }
-                if(nums[i] < lowest)
+                if (nums[i] < lowest)
                 {
                     lowest = nums[i];
                 }
@@ -268,10 +273,10 @@ namespace WhiteboardChallenges
         {
             string[] topLevelDomains = new string[] { "com", "gov", "net", "org", "mil", "edu" };
 
-            if(email.Contains("@") && email.Contains("."))
+            if (email.Contains("@") && email.Contains("."))
             {
                 string[] emailSplit = email.Split('@');
-                if (emailSplit[0].Length >= 1&& emailSplit[1].Contains('.'))
+                if (emailSplit[0].Length >= 1 && emailSplit[1].Contains('.'))
                 {
                     string[] domainSplit = emailSplit[1].Split('.');
                     if (domainSplit[0].Length >= 1 && topLevelDomains.Contains(domainSplit[1]))
@@ -289,12 +294,58 @@ namespace WhiteboardChallenges
             string letterPositions = "";
             string withoutSpaces = input.Replace(" ", String.Empty).ToLower();
 
-            for(int i = 0; i < withoutSpaces.Length; i++)
+            for (int i = 0; i < withoutSpaces.Length; i++)
             {
                 letterPositions += (withoutSpaces[i] - 96) + " ";
             }
 
             return letterPositions;
         }
+
+        public static string PrintDuplicateStringCharacters(string input)
+        {
+            string duplicates = "";
+            string currentLetter;
+
+            List<string> inputList = new List<string>();
+
+            //add all letters from input into a list
+            foreach (char letter in input)
+            {
+                inputList.Add(letter.ToString());
+            }
+
+            //check the list for duplicates by assigning current letter to the first letter in the list
+            for (int i = 0; i < inputList.Count; i++)
+            {
+                currentLetter = inputList[i];
+
+                //then go through the rest of the list to check the whole thing to see if any letter is the same as the current letter
+                //start the loop at where the current letter is plus one (you dont want the check the current letter vs itself)
+                for (int j = i + 1; j < inputList.Count; j++)
+                {
+                    if (currentLetter == inputList[j])
+                    {
+                        if (!duplicates.Contains(inputList[j]))
+                        {
+                            duplicates += currentLetter;
+                        }
+                    }
+                }
+            }
+            return duplicates;
+        }
+
+        public static string ReverseWithRecursion(string input, string reversed)
+        {
+            if (input.Length > 0)
+            {
+                reversed += input[input.Length - 1];
+                input = input.Remove(input.Length - 1);
+                return ReverseWithRecursion(input, reversed);
+            }
+            return reversed;
+        }
     }
+
 }
